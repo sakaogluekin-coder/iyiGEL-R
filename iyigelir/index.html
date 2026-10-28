@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>İyi Gelir – Duygularını paylaş</title>
+<meta name="google-site-verification" content="on8rs_ah8NH4dktkdQY66fKGwcByH3XOoRAurgDnByk" />
+<meta name="description" content="Duygularını paylaş, sana ne iyi geldiyse başkalarına öner.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root{--bg:#fbf7f2;--card:#fff;--tx:#2a2622;--mu:#7a716a;--ln:#ece4db;--ac:#e07a5f;--ac2:#f4e1d8;--ok:#3d8b6e;--warn:#fff3d6;--wt:#6b4e00}
@@ -165,7 +167,7 @@ function render() {
   document.querySelectorAll("[data-like]").forEach(b => b.onclick = () => act(() => api("/api/like", { tipId: b.dataset.like })));
   document.querySelectorAll("[data-delpost]").forEach(b => b.onclick = () => { if (confirm("Bu paylaşım silinsin mi?")) act(() => api("/api/delete", { kind: "post", id: b.dataset.delpost })); });
   document.querySelectorAll("[data-deltip]").forEach(b => b.onclick = () => { if (confirm("Bu öneri silinsin mi?")) act(() => api("/api/delete", { kind: "tip", id: b.dataset.deltip })); });
-  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { openTip = openTip === b.dataset.open ? null : b.dataset.open; render(); });
+  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { openTip = openTip === b.dataset.open ? null : b.dataset.open; render(); if ($("#tt")) $("#tt").focus(); });
   document.querySelectorAll("[data-tip]").forEach(b => b.onclick = () => {
     const text = $("#tt").value.trim();
     if (!text) return toast("Bir öneri yaz.");
